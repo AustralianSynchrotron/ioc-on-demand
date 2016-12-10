@@ -1,0 +1,4 @@
+record(calc, "$(PREFIX):RAND") {
+  field(CALC, "RNDM")
+  field(SCAN, ".1 second")
+}

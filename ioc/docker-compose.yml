@@ -10,3 +10,6 @@ services:
       - 5064:5064
       - 5064:5064/udp
       - 5065:5065
+    command: ./build-and-run
+    tty: true
+    working_dir: /ioc/iocBoot/iocToto

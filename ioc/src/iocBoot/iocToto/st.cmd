@@ -12,7 +12,7 @@ dbLoadDatabase "dbd/Toto.dbd"
 Toto_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
-#dbLoadRecords("db/xxx.db","user=icsHost")
+dbLoadRecords("db/records.db","PREFIX=$(HOSTNAME)")
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
