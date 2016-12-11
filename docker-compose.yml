@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+
+  ioc-launcher:
+    build: ioc-launcher
+    ports:
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  gateway:
+    image: dmscid/epics-gateway
+    command: -cip 172.111.255.255
+    ports:
+      - 5064:5064
+      - 5064:5064/udp
+      - 5065:5065
+
+networks:
+
+  default:
+    external:
+      name: pyepics-workshop
