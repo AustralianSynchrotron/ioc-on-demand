@@ -7,7 +7,9 @@ from .launcher import Launcher
 async def create_container_handler(request):
     launch_config = request.app['launch_config']
     container_id = await request.app['launcher'].launch(**launch_config)
-    return web.Response(text=container_id)
+    hostname = container_id[:12]
+    headers = {'Access-Control-Allow-Origin': '*'}
+    return web.Response(text=hostname, headers=headers)
 
 
 def create_app():

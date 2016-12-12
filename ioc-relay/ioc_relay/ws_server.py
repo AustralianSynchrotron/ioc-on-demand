@@ -1,5 +1,6 @@
 import asyncio
 from functools import partial
+import json
 
 import websockets
 from websockets.exceptions import ConnectionClosed
@@ -18,8 +19,20 @@ def main():
 async def client_handler(websocket, path, *, register):
     while True:
         try:
-            pvname = await websocket.recv()
+            message = await websocket.recv()
         except ConnectionClosed:
             break
         else:
-            register.subscribe(pvname=pvname, websocket=websocket)
+            await process_message(message, websocket=websocket, register=register)
+
+
+async def process_message(message, *, websocket, register):
+    try:
+        data = json.loads(message)
+    except json.decoder.JSONDecodeError:
+        return
+    action = data.get('action')
+    if action == 'subscribe':
+        register.subscribe(pvname=data['name'], websocket=websocket)
+    elif action == 'unsubscribe':
+        register.unsubscribe(pvname=data['name'], websocket=websocket)
