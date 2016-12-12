@@ -12,7 +12,7 @@ export default class Dashboard extends Component {
 
   componentWillMount () {
     this.setState({connected: false})
-    this.socket = new WebSocket('ws://localhost:5678/')
+    this.socket = new WebSocket(process.env.REACT_APP_WS_URL)
     this.socket.onopen = (event) => { this.subscribe() }
     this.socket.onmessage = this.update.bind(this)
   }

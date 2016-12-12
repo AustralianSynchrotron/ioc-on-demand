@@ -13,7 +13,7 @@ export default class App extends Component {
   }
 
   handleLaunch () {
-    axios.post('http://localhost:8080/new')
+    axios.post(`${process.env.REACT_APP_LAUNCH_URL}/new`)
          .then(({ data }) => { this.props.router.push(`/${data}`) })
   }
 
@@ -30,4 +30,5 @@ export default class App extends Component {
       </div>
     )
   }
+
 }

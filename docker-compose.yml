@@ -21,6 +21,11 @@ services:
     environment:
       - EPICS_CA_ADDR_LIST=gateway
 
+  ioc-dashboard:
+    build: ioc-dashboard
+    ports:
+      - 9000:9000
+
   gateway:
     image: dmscid/epics-gateway
     command: -cip 172.111.255.255
