@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import RaisedButton from 'material-ui/RaisedButton'
 
-import logo from './logo.svg'
-import './App.css'
 
+const styles = {
+  container: {
+    textAlign: 'center',
+    paddingTop: 200,
+  },
+}
 
 export default class App extends Component {
 
@@ -19,14 +24,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>IOC Dashboard</h2>
-        </div>
-        <p className="App-intro">
-          <button onClick={this.handleLaunch}>Launch IOC</button>
-        </p>
+      <div style={styles.container}>
+        <h1>IOC Dashboard</h1>
+        <RaisedButton label="Launch IOC" onTouchTap={this.handleLaunch} primary={true}/>
       </div>
     )
   }

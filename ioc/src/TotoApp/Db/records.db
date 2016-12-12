@@ -1,4 +1,9 @@
-record(calc, "$(PREFIX):RAND") {
+record(calc, "$(PREFIX):RANDOM") {
   field(CALC, "RNDM")
   field(SCAN, "1 second")
+}
+
+record(calc, "$(PREFIX):FAST_RANDOM") {
+  field(CALC, "RNDM")
+  field(SCAN, ".1 second")
 }

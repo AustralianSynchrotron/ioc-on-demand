@@ -4,3 +4,4 @@ ioc/src/bin/
 db/
 dbd/
 envPaths
+*.env
