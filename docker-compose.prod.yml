@@ -1,8 +1,0 @@
-version: "2"
-
-services:
-
-  ioc-dashboard:
-    environment:
-      - REACT_APP_LAUNCH_URL='http://10.6.0.136:8080'
-      - REACT_APP_WS_URL='ws://10.6.0.136:5678/'
