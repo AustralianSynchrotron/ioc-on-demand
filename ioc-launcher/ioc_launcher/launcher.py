@@ -2,17 +2,24 @@ import asyncio
 from functools import partial
 from concurrent.futures import ThreadPoolExecutor
 
+from .utils import HostnameGenerator
+
 
 class Launcher:
-    def __init__(self, *, docker_client, max_workers):
+    def __init__(self, *, docker_client, max_workers, hostname_generator=None):
         executor = ThreadPoolExecutor(max_workers=max_workers)
         self._docker = AsyncDockerClient(docker_client, executor=executor)
+        self._hostname_generator = hostname_generator or HostnameGenerator()
 
     async def launch(self, *, image, network, tty=False):
         host_config = await self._docker.create_host_config(network_mode=network)
-        ioc = await self._docker.create_container(image, host_config=host_config, tty=tty)
+        hostname = next(self._hostname_generator)
+        ioc = await self._docker.create_container(image,
+                                                  hostname=hostname,
+                                                  host_config=host_config,
+                                                  tty=tty)
         await self._docker.start(ioc)
-        return ioc['Id']
+        return hostname
 
 
 class AsyncDockerClient:
