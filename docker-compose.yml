@@ -2,12 +2,24 @@ version: "2"
 
 services:
 
+  ioc:
+    build: ioc
+    image: pyepics-workshop-ioc
+    entrypoint: "true"
+
   ioc-launcher:
     build: ioc-launcher
     ports:
       - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+  ioc-relay:
+    build: ioc-relay
+    ports:
+      - 5678:5678
+    environment:
+      - EPICS_CA_ADDR_LIST=gateway
 
   gateway:
     image: dmscid/epics-gateway
