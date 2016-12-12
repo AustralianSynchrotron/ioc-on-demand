@@ -3,11 +3,16 @@ Installation
 
 1. Create network::
 
-   docker network create \
-      --subnet=172.111.0.0/16 \
-      --gateway=172.111.0.1
-      pyepics-workshop
+    docker network create --subnet=172.111.0.0/16 --gateway=172.111.0.1 pyepics-workshop
 
 2. Start services::
 
-   docker-compose up -d
+    docker-compose up -d
+
+
+Production
+==========
+
+::
+
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
