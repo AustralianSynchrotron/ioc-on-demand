@@ -7,3 +7,51 @@ record(calc, "$(PREFIX):FAST_RANDOM") {
   field(CALC, "RNDM")
   field(SCAN, ".1 second")
 }
+
+record(ao, "$(PREFIX):X") {
+  field(DESC, "Store a number between 0 and 100")
+  field(VAL, 2)
+  field(DRVL, 0)
+  field(DRVH, 100)
+}
+
+record(ao, "$(PREFIX):Y") {
+  field(DESC, "Store a number between 0 and 100")
+  field(VAL, 3)
+  field(DRVL, 0)
+  field(DRVH, 100)
+}
+
+record(calc, "$(PREFIX):X_TIMES_Y") {
+  field(DESC, "X times Y")
+  field(SCAN, "Passive")
+  field(INPA, "$(PREFIX):X CP")
+  field(INPB, "$(PREFIX):Y CP")
+  field(CALC, "A * B")
+}
+
+record(stringout, "$(PREFIX):SHORT_STRING") {
+  field(DESC, "A short string")
+  field(VAL, "a message up to 40 characters")
+  field(PINI, "YES")
+}
+
+record(waveform, "$(PREFIX):LONG_STRING") {
+  field(DESC, "Bytes which may be text")
+  field(FTVL, "UCHAR")
+  field(NELM, "500")
+}
+
+record (mbbo, "$(PREFIX):ALERT") {
+  field(DESC, "Alert level")
+  field(VAL, "0")
+  field(PINI, "YES")
+  field(ZRST, "all clear")
+  field(ONST, "nothing to worry about")
+  field(TWST, "uh-oh")
+  field(THST, "run for the hills")
+  field(ZRSV, "NO_ALARM")
+  field(ONSV, "NO_ALARM")
+  field(TWSV, "MINOR")
+  field(THSV, "MAJOR")
+}

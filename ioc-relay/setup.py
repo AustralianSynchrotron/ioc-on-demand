@@ -14,6 +14,7 @@ setup(
     install_requires=[
         'websockets',
         'pyepics',
+        'numpy',
     ],
     entry_points={
         'console_scripts': [

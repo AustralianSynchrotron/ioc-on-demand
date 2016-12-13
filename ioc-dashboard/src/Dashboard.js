@@ -19,6 +19,12 @@ const styles = {
 const PV_SUFFIXES = [
   'RANDOM',
   'FAST_RANDOM',
+  'X',
+  'Y',
+  'X_TIMES_Y',
+  'SHORT_STRING',
+  'LONG_STRING',
+  'ALERT',
 ]
 
 
@@ -57,25 +63,26 @@ export default class Dashboard extends Component {
 
   render() {
     const { ioc } = this.props.params
+    const { values } = this.state
     return (
       <div style={styles.tableContainer}>
         <h1>{`IOC: ${ioc}`}</h1>
         <Table wrapperStyle={styles.table}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
-            <TableRow>
+            <TableRow selectable={false}>
               <TableHeaderColumn>Name</TableHeaderColumn>
               <TableHeaderColumn>Value</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
-            <TableRow>
-              <TableRowColumn>{`${ioc}:RANDOM`}</TableRowColumn>
-              <TableRowColumn>{this.state.values[`${ioc}:RANDOM`]}</TableRowColumn>
-            </TableRow>
-            <TableRow>
-              <TableRowColumn>{`${ioc}:FAST_RANDOM`}</TableRowColumn>
-              <TableRowColumn>{this.state.values[`${ioc}:FAST_RANDOM`]}</TableRowColumn>
-            </TableRow>
+            <PvRow name={`${ioc}:RANDOM`} value={values[`${ioc}:RANDOM`]} />
+            <PvRow name={`${ioc}:FAST_RANDOM`} value={values[`${ioc}:FAST_RANDOM`]} />
+            <PvRow name={`${ioc}:X`} value={values[`${ioc}:X`]} />
+            <PvRow name={`${ioc}:Y`} value={values[`${ioc}:Y`]} />
+            <PvRow name={`${ioc}:X_TIMES_Y`} value={values[`${ioc}:X_TIMES_Y`]} />
+            <PvRow name={`${ioc}:SHORT_STRING`} value={values[`${ioc}:SHORT_STRING`]} />
+            <PvRow name={`${ioc}:LONG_STRING`} value={values[`${ioc}:LONG_STRING`]} />
+            <PvRow name={`${ioc}:ALERT`} value={values[`${ioc}:ALERT`]} />
           </TableBody>
         </Table>
       </div>
@@ -83,3 +90,11 @@ export default class Dashboard extends Component {
   }
 
 }
+
+
+const PvRow = ({name, value}) => (
+  <TableRow selectable={false}>
+    <TableRowColumn>{name}</TableRowColumn>
+    <TableRowColumn>{value}</TableRowColumn>
+  </TableRow>
+)
