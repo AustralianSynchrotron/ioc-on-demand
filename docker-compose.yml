@@ -2,6 +2,14 @@ version: "2"
 
 services:
 
+  proxy:
+    image: nginx:1.11.6
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    restart: always
+
   ioc:
     build: ioc
     image: pyepics-workshop-ioc
