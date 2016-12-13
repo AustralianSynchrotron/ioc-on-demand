@@ -1,33 +1,81 @@
 record(calc, "$(PREFIX):RANDOM") {
+  field(DESC, "A random number between 0 and 1")
   field(CALC, "RNDM")
   field(SCAN, "1 second")
+  field(PINI, "YES")
+  field(EGU, "mm")
+  field(PREC, 3)
+  field(HOPR, 1)
+  field(LOPR, 0)
+  field(HIHI, 0.9)
+  field(HIGH, 0.75)
+  field(LOW, 0.25)
+  field(LOLO, 0.1)
+  field(HHSV, "MAJOR")
+  field(HSV, "MINOR")
+  field(LSV, "MINOR")
+  field(LLSV, "MAJOR")
 }
 
 record(calc, "$(PREFIX):FAST_RANDOM") {
   field(CALC, "RNDM")
   field(SCAN, ".1 second")
+  field(PINI, "YES")
+  field(EGU, "mm")
+  field(PREC, 3)
+  field(HOPR, 1)
+  field(LOPR, 0)
+  field(HIHI, .9)
+  field(HIGH, .75)
+  field(LOW, .25)
+  field(LOLO, .1)
+  field(HHSV, "MAJOR")
+  field(HSV, "MINOR")
+  field(LSV, "MINOR")
+  field(LLSV, "MAJOR")
 }
 
 record(ao, "$(PREFIX):X") {
   field(DESC, "Store a number between 0 and 100")
   field(VAL, 2)
-  field(DRVL, 0)
+  field(PINI, "YES")
+  field(HOPR, 100)
+  field(LOPR, 0)
   field(DRVH, 100)
+  field(DRVL, 0)
+  field(HIHI, 95)
+  field(HIGH, 90)
+  field(HHSV, "MAJOR")
+  field(HSV, "MINOR")
 }
 
 record(ao, "$(PREFIX):Y") {
   field(DESC, "Store a number between 0 and 100")
   field(VAL, 3)
-  field(DRVL, 0)
+  field(PINI, "YES")
+  field(HOPR, 100)
+  field(LOPR, 0)
   field(DRVH, 100)
+  field(DRVL, 0)
+  field(HIHI, 95)
+  field(HIGH, 90)
+  field(HHSV, "MAJOR")
+  field(HSV, "MINOR")
 }
 
 record(calc, "$(PREFIX):X_TIMES_Y") {
   field(DESC, "X times Y")
   field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(CALC, "A * B")
   field(INPA, "$(PREFIX):X CP")
   field(INPB, "$(PREFIX):Y CP")
-  field(CALC, "A * B")
+  field(HOPR, 10000)
+  field(LOPR, 0)
+  field(HIHI, 5000)
+  field(HIGH, 1000)
+  field(HHSV, "MAJOR")
+  field(HSV, "MINOR")
 }
 
 record(stringout, "$(PREFIX):SHORT_STRING") {
@@ -38,13 +86,14 @@ record(stringout, "$(PREFIX):SHORT_STRING") {
 
 record(waveform, "$(PREFIX):LONG_STRING") {
   field(DESC, "Bytes which may be text")
+  field(PINI, "YES")
   field(FTVL, "UCHAR")
   field(NELM, "500")
 }
 
 record (mbbo, "$(PREFIX):ALERT") {
   field(DESC, "Alert level")
-  field(VAL, "0")
+  field(VAL, "3")
   field(PINI, "YES")
   field(ZRST, "all clear")
   field(ONST, "nothing to worry about")

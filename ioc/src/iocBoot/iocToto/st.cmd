@@ -19,3 +19,6 @@ iocInit
 
 ## Start any sequence programs
 #seq sncxxx,"user=icsHost"
+epicsThreadSleep(1)
+
+dbpf("$(HOSTNAME):LONG_STRING", "Once upon a time...")

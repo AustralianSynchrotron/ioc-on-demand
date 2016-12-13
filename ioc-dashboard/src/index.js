@@ -16,7 +16,7 @@ const Routes = (props) => (
   <MuiThemeProvider>
     <Router {...props}>
       <Route path="/" component={App}/>
-      <Route path="/:ioc" component={Dashboard}/>
+      <Route path="/iocs/:ioc" component={Dashboard}/>
     </Router>
   </MuiThemeProvider>
 )

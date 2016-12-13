@@ -19,7 +19,7 @@ export default class App extends Component {
 
   handleLaunch () {
     axios.post(`${process.env.REACT_APP_LAUNCH_URL}/new`)
-         .then(({ data }) => { this.props.router.push(`/${data}`) })
+         .then(({ data }) => { this.props.router.push(`/iocs/${data}`) })
   }
 
   render() {

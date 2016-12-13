@@ -10,7 +10,7 @@ const styles = {
     paddingTop: 50,
   },
   table: {
-    maxWidth: 500,
+    maxWidth: 800,
     margin: '0 auto',
   }
 }
@@ -66,7 +66,7 @@ export default class Dashboard extends Component {
     const { values } = this.state
     return (
       <div style={styles.tableContainer}>
-        <h1>{`IOC: ${ioc}`}</h1>
+        <h1>{`IOC Prefix: ${ioc}`}</h1>
         <Table wrapperStyle={styles.table}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow selectable={false}>
