@@ -16,13 +16,17 @@ DBD += Toto.dbd
 Toto_DBD += base.dbd
 
 # Include dbd files from all support applications:
-#Toto_DBD += xxx.dbd
+Toto_DBD += subroutine.dbd
+Toto_DBD += wave.dbd
 
 # Add all the support libraries needed by this IOC
 #Toto_LIBS += xxx
 
 # Toto_registerRecordDeviceDriver.cpp derives from Toto.dbd
 Toto_SRCS += Toto_registerRecordDeviceDriver.cpp
+
+Toto_SRCS += subroutine.c
+Toto_SRCS += wave.c
 
 # Build the main IOC entry point on workstation OSs.
 Toto_SRCS_DEFAULT += TotoMain.cpp

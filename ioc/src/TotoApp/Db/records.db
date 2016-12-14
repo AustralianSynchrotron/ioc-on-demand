@@ -1,16 +1,16 @@
-record(calc, "$(PREFIX):RANDOM") {
-  field(DESC, "A random number between 0 and 1")
-  field(CALC, "RNDM")
+record(calc, "$(PREFIX):TEMPERATURE") {
+  field(DESC, "A noisy temperature reading")
+  field(CALC, "21.5 + RNDM")
   field(SCAN, "1 second")
   field(PINI, "YES")
-  field(EGU, "mm")
+  field(EGU, "C")
   field(PREC, 3)
   field(HOPR, 1)
   field(LOPR, 0)
-  field(HIHI, 0.9)
-  field(HIGH, 0.75)
-  field(LOW, 0.25)
-  field(LOLO, 0.1)
+  field(HIHI, 22.25)
+  field(HIGH, 22.45)
+  field(LOW, 21)
+  field(LOLO, 20)
   field(HHSV, "MAJOR")
   field(HSV, "MINOR")
   field(LSV, "MINOR")
@@ -91,7 +91,7 @@ record(waveform, "$(PREFIX):LONG_STRING") {
   field(NELM, "500")
 }
 
-record (mbbo, "$(PREFIX):ALERT") {
+record(mbbo, "$(PREFIX):ALERT") {
   field(DESC, "Alert level")
   field(VAL, "3")
   field(PINI, "YES")
@@ -103,4 +103,47 @@ record (mbbo, "$(PREFIX):ALERT") {
   field(ONSV, "NO_ALARM")
   field(TWSV, "MINOR")
   field(THSV, "MAJOR")
+}
+
+record(aSub, "$(PREFIX):WAVE_GENERATOR") {
+  field(SCAN, "1 second")
+  field(SNAM, "processWave")
+  field(FTVA, "FLOAT")
+  field(NOVA, "1000")
+  field(OUTA, "$(PREFIX):WAVE PP")
+}
+
+record(waveform, "$(PREFIX):WAVE") {
+  field(FTVL, "FLOAT")
+  field(NELM, "1000")
+}
+
+record(ao, "$(PREFIX):SETPOINT") {
+  field(VAL, "7")
+  field(PINI, "YES")
+  field(DRVL, 0)
+  field(DRVH, 10)
+  field(LOPR, 0)
+  field(HOPR, 10)
+  field(EGU, "mm")
+}
+
+record(sub, "$(PREFIX):READBACK") {
+  field(SCAN, ".1 second")
+  field(SNAM, "processReadback")
+  field(INPA, "$(PREFIX):SETPOINT")
+  field(PREC, 3)
+  field(EGU, "mm")
+}
+
+record(sub, "$(PREFIX):TEMPERATURE") {
+  field(SCAN, "1 second")
+  field(INAM, "initSubroutine")
+  field(SNAM, "processSubroutine")
+  field(PREC, 3)
+  field(EGU, "C")
+  field(LOLO, 0)
+  field(HIHI, 100)
+  field(LLSV, MAJOR)
+  field(HHSV, MAJOR)
 }

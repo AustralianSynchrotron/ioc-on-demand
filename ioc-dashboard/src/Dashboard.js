@@ -17,7 +17,7 @@ const styles = {
 
 
 const PV_SUFFIXES = [
-  'RANDOM',
+  'TEMPERATURE',
   'FAST_RANDOM',
   'X',
   'Y',
@@ -25,6 +25,8 @@ const PV_SUFFIXES = [
   'SHORT_STRING',
   'LONG_STRING',
   'ALERT',
+  'SETPOINT',
+  'READBACK',
 ]
 
 
@@ -75,8 +77,10 @@ export default class Dashboard extends Component {
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
-            <PvRow name={`${ioc}:RANDOM`} value={values[`${ioc}:RANDOM`]} />
+            <PvRow name={`${ioc}:TEMPERATURE`} value={values[`${ioc}:TEMPERATURE`]} />
             <PvRow name={`${ioc}:FAST_RANDOM`} value={values[`${ioc}:FAST_RANDOM`]} />
+            <PvRow name={`${ioc}:SETPOINT`} value={values[`${ioc}:SETPOINT`]} />
+            <PvRow name={`${ioc}:READBACK`} value={values[`${ioc}:READBACK`]} />
             <PvRow name={`${ioc}:X`} value={values[`${ioc}:X`]} />
             <PvRow name={`${ioc}:Y`} value={values[`${ioc}:Y`]} />
             <PvRow name={`${ioc}:X_TIMES_Y`} value={values[`${ioc}:X_TIMES_Y`]} />
