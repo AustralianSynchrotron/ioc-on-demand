@@ -32,7 +32,7 @@ static long processSubroutine (subRecord* record) {
 
 
 static long processReadback (subRecord* record) {
-  double stepSize = .25;
+  double stepSize = .19;
   if (fabs(record->val - record->a) <= stepSize) {
     record->val = record->a;
   } else if (record->val < record->a) {
