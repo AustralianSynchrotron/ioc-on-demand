@@ -39,7 +39,7 @@ services:
 
   gateway:
     image: dmscid/epics-gateway
-    command: -cip 172.111.255.255
+    command: -cip 172.111.255.255 -no_cache
     ports:
       - 5064:5064
       - 5064:5064/udp
